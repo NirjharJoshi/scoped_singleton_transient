@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scoped_Singleton_Tansient_Web", "Scoped_Singleton_Tansient_Web\Scoped_Singleton_Tansient_Web.csproj", "{24540CE6-D35C-45EE-B365-3EF15F5FBCDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24540CE6-D35C-45EE-B365-3EF15F5FBCDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24540CE6-D35C-45EE-B365-3EF15F5FBCDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24540CE6-D35C-45EE-B365-3EF15F5FBCDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24540CE6-D35C-45EE-B365-3EF15F5FBCDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {332876DD-7CE2-4248-8C85-3FB7F94F52AE}
+	EndGlobalSection
+EndGlobal
