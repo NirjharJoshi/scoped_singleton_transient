@@ -1,7 +1,13 @@
+using Scoped_Singleton_Tansient_Web.Repository;
+using Scoped_Singleton_Tansient_Web.Repository.IRepository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ISingletonStudentRepository, SingletonStudentRepository>();
+builder.Services.AddScoped<IScopedStudentRepository, ScopedStudentRepository>();
+builder.Services.AddTransient<ITransientStudentRepository, TransientStudentRepository>();
 
 var app = builder.Build();
 

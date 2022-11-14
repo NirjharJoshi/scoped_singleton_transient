@@ -1,8 +1,71 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model Scoped_Singleton_Tansient_Web.Models.Student
+@inject Scoped_Singleton_Tansient_Web.Repository.IRepository.ISingletonStudentRepository _singletonStudent
+@inject Scoped_Singleton_Tansient_Web.Repository.IRepository.IScopedStudentRepository _scopedStudent
+@inject Scoped_Singleton_Tansient_Web.Repository.IRepository.ITransientStudentRepository _transientStudent
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-3">
+    <form method="post">
+        <label asp-for="RollNumber"></label>
+        <input asp-for="RollNumber" />
+        <span asp-validation-for="RollNumber"></span>
+        <label asp-for="Class"></label>
+        <input asp-for="Class" value="5" />
+        <span asp-validation-for="Class"></span>
+        <label asp-for="Section"></label>
+        <input asp-for="Section" value="A" />
+        <span asp-validation-for="Section"></span>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+        <div class="mt-4">
+            <button asp-controller="Home" asp-action="Index" class="btn btn-primary">Add Student To All</button>
+        </div>
+    </form>
+</div>
+<div class="container row mt-5">
+    <div class="col-4">
+        <h3>Singleton</h3>
+        <h4>Total Students = @_singletonStudent.TotalStudent()</h4>
+        <div>
+            <table class="">
+                <thead><tr><th>RollNo</th><th>Class</th><th>Section</th><th>Name</th></tr></thead>
+                <tbody>
+                    @foreach (var student in _singletonStudent.Students)
+                    {
+                        <tr><td>@student.RollNumber</td><td>@student.Class</td><td>@student.Section</td><td>@student.Name</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-4">
+        <h3>Scoped</h3>
+        <h4>Total Students = @_scopedStudent.TotalStudent()</h4>
+        <div>
+            <table>
+                <thead><tr><th>RollNo</th><th>Class</th><th>Section</th><th>Name</th></tr></thead>
+                <tbody>
+                    @foreach (var student in _scopedStudent.Students)
+                    {
+                        <tr><td>@student.RollNumber</td><td>@student.Class</td><td>@student.Section</td><td>@student.Name</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-4">
+        <h3>Transient</h3>
+        <h4>Total Students = @_transientStudent.TotalStudent()</h4>
+        <div>
+            <table>
+                <thead><tr><th>RollNo</th><th>Class</th><th>Section</th><th>Name</th></tr></thead>
+                <tbody>
+                    @foreach (var student in _transientStudent.Students)
+                    {
+                        <tr><td>@student.RollNumber</td><td>@student.Class</td><td>@student.Section</td><td>@student.Name</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
