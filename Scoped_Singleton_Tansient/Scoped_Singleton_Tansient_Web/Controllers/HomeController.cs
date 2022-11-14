@@ -12,7 +12,7 @@ namespace Scoped_Singleton_Tansient_Web.Controllers
         private readonly IScopedStudentRepository _scopedStudentRepo;
         private readonly ITransientStudentRepository _transientStudentRepo;
 
-        public HomeController(ILogger<HomeController> logger, 
+        public HomeController(ILogger<HomeController> logger,
             ISingletonStudentRepository singletonStudentRepo,
             IScopedStudentRepository scopedStudentRepo,
             ITransientStudentRepository transientStudentRepo)
@@ -33,9 +33,12 @@ namespace Scoped_Singleton_Tansient_Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Index_POST(Student student)
         {
-            _singletonStudentRepo.AddStudent(student);
-            _scopedStudentRepo.AddStudent(student);
-            _transientStudentRepo.AddStudent(student);
+            if (ModelState.IsValid)
+            {
+                _singletonStudentRepo.AddStudent(student);
+                _scopedStudentRepo.AddStudent(student);
+                _transientStudentRepo.AddStudent(student);
+            }
             return View(student);
         }
 
